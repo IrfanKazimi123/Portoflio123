@@ -1,0 +1,370 @@
+/* =========================
+   RESET & BASE
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+background: linear-gradient( to top, rgba(81, 111, 219, 0.889),rgb(0, 0, 0), rgb(0, 0, 0) );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+}
+/* =========================
+   HEADER
+========================= */
+header {
+  width: 100%;
+  padding: 20px 40px;
+  background: rgba(0,0,0,0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  backdrop-filter: blur(5px);
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+  transform: scale(1.1);
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+  z-index: 1100;
+}
+/* responsive header */
+@media (max-width: 768px) {
+  header {
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 20px 25px;
+  }
+  header h1{
+    font-size: 2rem;
+  color: #fff;
+  }
+
+  .hamburger {
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  nav ul li a {
+    font-size: 1.4rem;
+  }
+}
+/* =========================
+   HERO SECTION
+========================= */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 120px 50px 50px 50px;
+  gap: 50px;
+  height: 800px;
+  background-image: url(/img/banner.png);
+  background-size: cover;
+  background-position: fit;
+  background-repeat: no-repeat;
+  image-rendering: auto; /* or crisp-edges for pixel art */
+}
+
+.hero-right h2 {
+  font-size: 4.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 12px orange;
+}
+
+.hero-right p {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  width: 55rem;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #e88d03d7;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #355de2;
+  transform: scale(1.05);
+}
+/* ===========her0-resposive==============
+   RESPONSIVE hero
+========================= */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 23px;
+    gap: 30px;
+    height: 25rem;
+  }
+
+  .hero-right h2 {
+    font-size: 2.1rem;
+  }
+
+  .hero-right p {
+    font-size: 1rem;
+    width: 25rem;
+  }
+}
+
+/* =========================
+   MAIN CONTENT CENTER
+========================= */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =========================
+   PROJECTS INTRO
+========================= */
+.projects-intro {
+  padding: 80px 0 50px;
+}
+
+.projects-intro h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: aliceblue;
+}
+
+.projects-intro p {
+  color: #cbd5f5;
+  max-width: 900px;
+}
+
+/* =========================
+   PROJECTS SECTION
+========================= */
+.section-container {
+  padding: 40px 0 100px;
+}
+
+.section-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+
+/* =========================
+   PROJECT GRID
+========================= */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+/* =========================
+   PROJECT CARD
+========================= */
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.6);
+}
+
+.project-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 20px;
+}
+
+.project-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  color: #cbd5f5;
+  margin-bottom: 16px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  background: rgba(15, 23, 42, 0.8);
+  color: #fff;
+  padding: 40px 50px;
+  margin: 0px;
+  height: 12rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-section h3 {
+  margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: #70a1ee;
+}
+
+.footer-section ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.back-to-top a {
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+}
+/* =========================
+   FOOTER RESPONSIVE
+========================= */
+
+/* Tablet (up to 900px) */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .footer-section ul {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  footer {
+    padding: 30px 40px;
+    height: auto;
+  }
+}
+
+/* Mobile (up to 600px) */
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-section h3 {
+    font-size: 1.1rem;
+  }
+
+  .footer-section p,
+  .footer-section a {
+    font-size: 0.9rem;
+  }
+
+  .footer-section ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  footer {
+    padding: 25px 20px;
+    height: auto;
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem;
+  }
+}
+
