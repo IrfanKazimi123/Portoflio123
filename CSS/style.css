@@ -11,7 +11,7 @@
 =========================*/
 body {
   font-family: 'Times New Roman', Times, serif;
-  background-image: url(/img/body.png);
+  background-image: url(img/body.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -117,7 +117,7 @@ nav ul li a:hover {
   padding: 120px 50px 50px 50px;
   gap: 50px;
   height: 800px;
-  background-image: url(/img/Hero.png);
+  background-image: url(img/Hero.png);
   background-size: cover;
   background-position: fit;
   background-repeat: no-repeat;
