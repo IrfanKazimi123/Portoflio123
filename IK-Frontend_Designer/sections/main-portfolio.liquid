@@ -1,0 +1,23 @@
+<section class="collection">
+  <h2>{{ section.settings.title }}</h2>
+
+  <div class="product-grid">
+    {% for product in collections.all.products %}
+      {% render 'card-product', product: product %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our Products"
+    }
+  ]
+}
+{% endschema %}
