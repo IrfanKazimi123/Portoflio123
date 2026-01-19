@@ -1,7 +1,15 @@
 <div class="card">
-  <img src="{{ product_image | asset_url }}" alt="{{ product_title }}" width="400" height="300">
+  {% if product_image %}
+    <img src="{{ product_image | image_url: width: 600 }}" alt="{{ product_title }}" width="600" height="400">
+  {% endif %}
+
   <div class="card-content">
-    <h3>{{ product_title }}</h3>
-    <a href="{{ product_link }}" class="card-button">View Project</a>
+    {% if product_title %}
+      <h3>{{ product_title }}</h3>
+    {% endif %}
+
+    {% if product_link %}
+      <a href="{{ product_link }}" class="card-button">View Project</a>
+    {% endif %}
   </div>
 </div>
