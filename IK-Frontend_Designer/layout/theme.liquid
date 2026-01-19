@@ -11,8 +11,8 @@
   <!-- Full theme CSS -->
   {{ 'style.css' | asset_url | stylesheet_tag }}
 
-  <!-- Shopify JS -->
-  <script src="{{ 'custom.js' | asset_url }}" defer></script>
+  <!-- Custom JS -->
+  {{ 'custom.js' | asset_url | script_tag: defer }}
 
   <!-- Shopify Meta / SEO -->
   {{ content_for_header }}
@@ -29,3 +29,4 @@
   {% section 'footer' %}
 </body>
 </html>
+

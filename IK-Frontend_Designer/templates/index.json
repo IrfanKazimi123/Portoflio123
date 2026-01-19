@@ -10,5 +10,27 @@
       "type": "footer"
     }
   },
-  "order": ["header", "main", "footer"]
+  "order": ["header", "main", "footer"],
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Align",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    }
+  ]
 }

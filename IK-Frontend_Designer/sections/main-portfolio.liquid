@@ -1,8 +1,32 @@
 <section class="section main-portfolio">
   <div class="cards-grid">
-    {% render 'card-product', product_title: 'Kulmont Rescue', product_image: 'kulmont-rescue.jpg', product_link: '/projects/kulmont' %}
-    {% render 'card-product', product_title: 'Aurelia Branding', product_image: 'aurelia.jpg', product_link: '/projects/aurelia' %}
-    {% render 'card-product', product_title: 'Vaseline Life-Hack', product_image: 'vaseline.jpg', product_link: '/projects/vaseline' %}
+    {% for block in section.blocks %}
+      {% render 'card-product',
+         product_title: block.settings.title,
+         product_image: block.settings.image,
+         product_link: block.settings.link %}
+    {% endfor %}
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Main Portfolio",
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Main Portfolio" }
+  ]
+}
+{% endschema %}
+
 
