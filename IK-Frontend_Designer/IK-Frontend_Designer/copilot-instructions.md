@@ -1,0 +1,1 @@
+/Users/irfankazimi/Desktop/Portfolio/IK-Frontend_Designer/IK-Frontend_Designer/AGENTS.md

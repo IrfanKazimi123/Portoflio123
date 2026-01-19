@@ -1,23 +1,8 @@
-<section class="collection">
-  <h2>{{ section.settings.title }}</h2>
-
-  <div class="product-grid">
-    {% for product in collections.all.products %}
-      {% render 'card-product', product: product %}
-    {% endfor %}
+<section class="section main-portfolio">
+  <div class="cards-grid">
+    {% render 'card-product', product_title: 'Kulmont Rescue', product_image: 'kulmont-rescue.jpg', product_link: '/projects/kulmont' %}
+    {% render 'card-product', product_title: 'Aurelia Branding', product_image: 'aurelia.jpg', product_link: '/projects/aurelia' %}
+    {% render 'card-product', product_title: 'Vaseline Life-Hack', product_image: 'vaseline.jpg', product_link: '/projects/vaseline' %}
   </div>
 </section>
 
-{% schema %}
-{
-  "name": "Main Collection",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Our Products"
-    }
-  ]
-}
-{% endschema %}
