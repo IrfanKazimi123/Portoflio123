@@ -1,21 +1,13 @@
 {% doc %}
-  Renders a group of blocks with configurable layout direction, gap and
-  alignment.
-
-  All settings apply to only one dimension to reduce configuration complexity.
-
-  This component is a wrapper concerned only with rendering its children in
-  the specified layout direction with appropriate padding and alignment.
-
-  @example
-  {% content_for 'block', type: 'group', id: 'group' %}
+  Renders a flexible group container for blocks.
+  Supports horizontal and vertical layouts with alignment and padding.
 {% enddoc %}
 
 <div
   class="group {{ block.settings.layout_direction }}"
   style="
-    --padding: {{ block.settings.padding }}px;
-    --alignment: {{ block.settings.alignment }};
+    --group-padding: {{ block.settings.padding }}px;
+    --group-alignment: {{ block.settings.alignment }};
   "
   {{ block.shopify_attributes }}
 >
@@ -25,56 +17,58 @@
 {% stylesheet %}
   .group {
     display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden;
     width: 100%;
+    box-sizing: border-box;
   }
 
   .group--horizontal {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 var(--padding);
+    padding-left: var(--group-padding);
+    padding-right: var(--group-padding);
   }
 
   .group--vertical {
     flex-direction: column;
-    align-items: var(--alignment);
-    padding: var(--padding) 0;
+    align-items: var(--group-alignment);
+    padding-top: var(--group-padding);
+    padding-bottom: var(--group-padding);
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "t:general.group",
-  "blocks": [{ "type": "@theme" }],
+  "name": "Group",
+  "blocks": [
+    { "type": "@theme" }
+  ],
   "settings": [
     {
       "type": "select",
       "id": "layout_direction",
-      "label": "t:labels.layout_direction",
+      "label": "Layout direction",
       "default": "group--vertical",
       "options": [
-        { "value": "group--horizontal", "label": "t:options.direction.horizontal" },
-        { "value": "group--vertical", "label": "t:options.direction.vertical" }
+        { "value": "group--horizontal", "label": "Horizontal" },
+        { "value": "group--vertical", "label": "Vertical" }
       ]
     },
     {
-      "visible_if": "{{ block.settings.layout_direction == 'group--vertical' }}",
       "type": "select",
       "id": "alignment",
-      "label": "t:labels.alignment",
+      "label": "Alignment",
       "default": "flex-start",
       "options": [
-        { "value": "flex-start", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "flex-end", "label": "t:options.alignment.right" }
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
       ]
     },
     {
       "type": "range",
       "id": "padding",
-      "label": "t:labels.padding",
+      "label": "Padding",
       "default": 0,
       "min": 0,
       "max": 200,
@@ -84,8 +78,7 @@
   ],
   "presets": [
     {
-      "name": "t:general.column",
-      "category": "t:general.layout",
+      "name": "Column group",
       "settings": {
         "layout_direction": "group--vertical",
         "alignment": "flex-start",
@@ -93,8 +86,7 @@
       }
     },
     {
-      "name": "t:general.row",
-      "category": "t:general.layout",
+      "name": "Row group",
       "settings": {
         "layout_direction": "group--horizontal",
         "padding": 0

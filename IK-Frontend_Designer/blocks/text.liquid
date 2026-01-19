@@ -1,13 +1,9 @@
 {% doc %}
-  Renders a text block.
-
-  @example
-  {% content_for 'block', type: 'text', id: 'text' %}
+  Renders a text block with selectable style and alignment.
 {% enddoc %}
 
 <div
-  class="text {{ block.settings.text_style }}"
-  style="--text-align: {{ block.settings.alignment }}"
+  class="text {{ block.settings.text_style }} text-align-{{ block.settings.alignment }}"
   {{ block.shopify_attributes }}
 >
   {{ block.settings.text }}
@@ -15,45 +11,77 @@
 
 {% stylesheet %}
   .text {
-    text-align: var(--text-align);
+    margin: 0;
+    line-height: 1.4;
   }
+
+  /* Alignment */
+  .text-align-left {
+    text-align: left;
+  }
+
+  .text-align-center {
+    text-align: center;
+  }
+
+  .text-align-right {
+    text-align: right;
+  }
+
+  /* Text styles */
   .text--title {
     font-size: 2rem;
     font-weight: 700;
   }
+
   .text--subtitle {
     font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .text--normal {
+    font-size: 1rem;
+    font-weight: 400;
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "t:general.text",
+  "name": "Text",
   "settings": [
     {
       "type": "text",
       "id": "text",
-      "label": "t:labels.text",
+      "label": "Text",
       "default": "Text"
     },
     {
       "type": "select",
       "id": "text_style",
-      "label": "t:labels.text_style",
+      "label": "Text style",
+      "default": "text--title",
       "options": [
-        { "value": "text--title", "label": "t:options.text_style.title" },
-        { "value": "text--subtitle", "label": "t:options.text_style.subtitle" },
-        { "value": "text--normal", "label": "t:options.text_style.normal" }
-      ],
-      "default": "text--title"
+        { "value": "text--title", "label": "Title" },
+        { "value": "text--subtitle", "label": "Subtitle" },
+        { "value": "text--normal", "label": "Normal" }
+      ]
     },
     {
-      "type": "text_alignment",
+      "type": "select",
       "id": "alignment",
-      "label": "t:labels.alignment",
-      "default": "left"
+      "label": "Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
     }
   ],
-  "presets": [{ "name": "t:general.text" }]
+  "presets": [
+    {
+      "name": "Text"
+    }
+  ]
 }
 {% endschema %}

@@ -1,19 +1,31 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
 <head>
-  <meta charset="utf-8">
-  <title>{{ page_title }}</title>
-  {{ content_for_header }}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }} | {{ shop.name }}</title>
 
-  {{ 'base.css' | asset_url | stylesheet_tag }}
-  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  <!-- Critical CSS (above-the-fold styling) -->
+  {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+
+  <!-- Full theme CSS -->
+  {{ 'style.css' | asset_url | stylesheet_tag }}
+
+  <!-- Shopify JS -->
+  <script src="{{ 'custom.js' | asset_url }}" defer></script>
+
+  <!-- Shopify Meta / SEO -->
+  {{ content_for_header }}
 </head>
 
 <body>
+  <!-- Header -->
+  {% section 'header' %}
+
+  <!-- Main Content -->
   {{ content_for_layout }}
 
-  {{ 'custom.js' | asset_url | script_tag }}
+  <!-- Footer -->
+  {% section 'footer' %}
 </body>
 </html>
-
-
