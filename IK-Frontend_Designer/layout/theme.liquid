@@ -12,7 +12,7 @@
   {{ 'style.css' | asset_url | stylesheet_tag }}
 
   <!-- Custom JS -->
-  {{ 'custom.js' | asset_url | script_tag: defer }}
+  <script src="{{ 'custom.js' | asset_url }}" defer></script>
 
   <!-- Shopify Meta / SEO -->
   {{ content_for_header }}
